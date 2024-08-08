@@ -48,24 +48,28 @@
         }
 
         function copyOutput() {
-            // Mendapatkan elemen output
-            var outputElement = document.getElementById('output');
-            
-            // Membuat range dan selection
-            var range = document.createRange();
-            range.selectNode(outputElement);
-            window.getSelection().removeAllRanges(); // Menghapus range yang ada
-            window.getSelection().addRange(range); // Menambahkan range baru
-            
-            try {
-                // Menyalin isi ke clipboard
-                var successful = document.execCommand('copy');
-                var msg = successful ? 'successful' : 'unsuccessful';
-                console.log('Copy text command was ' + msg);
-            } catch (err) {
-                console.log('Oops, unable to copy');
-            }
-            
-            // Menghapus selection
-            window.getSelection().removeAllRanges();
+    // Mendapatkan elemen output
+    var outputElement = document.getElementById('output');
+    
+    // Membuat range dan selection
+    var range = document.createRange();
+    range.selectNode(outputElement);
+    window.getSelection().removeAllRanges(); // Menghapus range yang ada
+    window.getSelection().addRange(range); // Menambahkan range baru
+    
+    try {
+        // Menyalin isi ke clipboard
+        var successful = document.execCommand('copy');
+        if (successful) {
+            alert('Salinan berhasil!');
+        } else {
+            alert('Salinan gagal!');
         }
+    } catch (err) {
+        alert('Terjadi kesalahan saat menyalin.');
+    }
+    
+    // Menghapus selection
+    window.getSelection().removeAllRanges();
+}
+
