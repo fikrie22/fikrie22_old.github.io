@@ -1,4 +1,4 @@
-        function generateNBA() {
+       function generateNBA() {
             var input = document.getElementById("input").value;
             var lines = input.split(/\r?\n|\r/); // Membagi input berdasarkan baris baru atau baris
             var output = "";
@@ -47,7 +47,7 @@
             document.getElementById("output").innerText = output;
         }
 
-function copyOutput() {
+        function copyOutput() {
             // Mendapatkan elemen output
             var outputElement = document.getElementById('output');
             
@@ -68,4 +68,4 @@ function copyOutput() {
             
             // Menghapus selection
             window.getSelection().removeAllRanges();
-}
+        }
