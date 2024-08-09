@@ -38,8 +38,12 @@ function generateNBA() {
                 output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
                 return;
             }
-            // Membagi bagian W menjadi dua bagian dan menambah titik di antaranya
-            var wParts = parts[3].length > 1 ? parts[3][0] + "." + parts[3].substring(1) : parts[3];
+
+            // Modifikasi bagian W untuk memasukkan titik di antara dua digit terakhir
+            var wParts = parts[3].length === 3 
+                ? parts[3].substring(0, parts[3].length - 2) + "." + parts[3].substring(parts[3].length - 2) 
+                : parts[3];
+
             var nbaCode = "NBA." + category + "." + section + "." + wParts + "\n";
             output += nbaCode;
         } else {
@@ -48,7 +52,6 @@ function generateNBA() {
     });
     document.getElementById("output").innerText = output;
 }
-
 
 function copyOutput() {
     // Mendapatkan elemen output
