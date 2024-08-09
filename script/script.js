@@ -1,39 +1,42 @@
+let categories = {};
+let sections = {};
+
+// Fungsi untuk memuat data dari file JSON
+async function loadData() {
+    try {
+        const response = await fetch('../data.json');
+        const data = await response.json();
+        categories = data.categories;
+        sections = data.sections;
+        console.log("Data berhasil dimuat:", categories, sections); // Debugging
+    } catch (error) {
+        console.error("Gagal memuat file JSON:", error);
+    }
+}
+
+// Fungsi untuk menghasilkan kode NBA
 function generateNBA() {
     var input = document.getElementById("input").value;
     var lines = input.split(/\r?\n|\r/); // Membagi input berdasarkan baris baru atau baris
     var output = "";
+
     lines.forEach(function(line) {
         var parts = line.split(".");
         if (parts.length === 4) {
             var category = "";
-            if (parts[0] === "10") {
-                if (parts[1] === "13") {
-                    category = "B1A";
-                } else if (parts[1] === "14") {
-                    category = "B2A";
-                } else if (parts[1] === "15") {
-                    category = "B3A";
-                } else if (parts[1] === "19") {
-                    category = "B1B";
-                } else if (parts[1] === "20") {
-                    category = "B2B";
-                } else if (parts[1] === "21") {
-                    category = "B3B";
-                } else {
-                    output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
-                    return;
-                }
+            var section = "";
+
+            // Mendapatkan kategori berdasarkan bagian pertama dan kedua
+            if (categories[parts[0]] && categories[parts[0]][parts[1]]) {
+                category = categories[parts[0]][parts[1]];
             } else {
                 output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
                 return;
             }
-            var section = "";
-            if (parts[2] === "1") {
-                section = "A";
-            } else if (parts[2] === "2") {
-                section = "B";
-            } else if (parts[2] === "3") {
-                section = "C";
+
+            // Mendapatkan section berdasarkan bagian ketiga
+            if (sections[parts[2]]) {
+                section = sections[parts[2]];
             } else {
                 output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
                 return;
@@ -56,6 +59,12 @@ function generateNBA() {
         }
     });
     document.getElementById("output").textContent = output; // Gunakan textContent untuk menghindari pemformatan HTML
+}
+
+// Memastikan fungsi dijalankan setelah data terload
+window.onload = async function() {
+    await loadData();
+    document.getElementById("generateBtn").addEventListener("click", generateNBA);
 }
 
 function copyOutput() {
