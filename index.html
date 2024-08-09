@@ -6,33 +6,46 @@
     <title>Under Maintenance</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background: url('https://via.placeholder.com/1500x1000?text=Maintenance+Image') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
         }
         .maintenance-container {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 20px;
         }
         .maintenance-container h1 {
-            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffcc00;
         }
         .maintenance-container p {
-            color: #666;
+            font-size: 1.2em;
+            color: #e0e0e0;
+        }
+        .maintenance-container img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="maintenance-container">
+        <img src="https://via.placeholder.com/100?text=🚧" alt="Under Maintenance">
         <h1>Under Maintenance</h1>
-        <p>We are currently performing scheduled maintenance. We will be back shortly.</p>
+        <p>We are currently performing scheduled maintenance. Please check back later.</p>
     </div>
 </body>
 </html>
