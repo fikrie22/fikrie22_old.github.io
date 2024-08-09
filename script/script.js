@@ -17,11 +17,11 @@ function generateNBA() {
                     case "20": category = "B2B"; break;
                     case "21": category = "B3B"; break;
                     default:
-                        output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
+                        output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n\n";
                         return;
                 }
             } else {
-                output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
+                output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n\n";
                 return;
             }
 
@@ -31,7 +31,7 @@ function generateNBA() {
                 case "2": section = "B"; break;
                 case "3": section = "C"; break;
                 default:
-                    output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
+                    output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n\n";
                     return;
             }
 
@@ -39,20 +39,20 @@ function generateNBA() {
             const wParts = w.padStart(3, '0').replace(/(\d{2})(\d{1})/, '$1.$2');
 
             const nbaCode = `NBA.${category}.${section}.${wParts}\n`;
-            output += nbaCode;
+            output += nbaCode + "\n";
         } else {
-            output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
+            output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n\n";
         }
     });
 
-    document.getElementById("output").innerText = output;
+    document.getElementById("output").innerText = output.trim();
 }
 
 function copyOutput() {
     const outputElement = document.getElementById('output');
     const text = outputElement.textContent || outputElement.innerText;
 
-    // Menghapus semua spasi atau enter di bagian atas teks
+    // Mengambil teks dari elemen output dan menghapus spasi di awal dan akhir
     const trimmedText = text.trim();
 
     const tempElement = document.createElement('textarea');
