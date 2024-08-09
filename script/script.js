@@ -55,7 +55,7 @@ function generateNBA() {
             output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
         }
     });
-    document.getElementById("output").innerText = output;
+    document.getElementById("output").textContent = output; // Gunakan textContent untuk menghindari pemformatan HTML
 }
 
 function copyOutput() {
