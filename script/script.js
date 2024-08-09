@@ -38,7 +38,8 @@ function generateNBA() {
                 output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
                 return;
             }
-            var nbaCode = "NBA." + category + "." + section + "." + parts[3][0] + "." + parts[3][1] + "\n";
+            // Menggunakan seluruh bagian W, tanpa membatasi ke dua digit pertama
+            var nbaCode = "NBA." + category + "." + section + "." + parts[3] + "\n";
             output += nbaCode;
         } else {
             output += "Format input tidak valid. Pastikan formatnya adalah X.Y.Z.W\n";
