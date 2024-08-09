@@ -39,10 +39,15 @@ function generateNBA() {
                 return;
             }
 
-            // Modifikasi bagian W untuk memasukkan titik di antara dua digit terakhir
-            var wParts = parts[3].length === 3 
-                ? parts[3].substring(0, parts[3].length - 2) + "." + parts[3].substring(parts[3].length - 2) 
-                : parts[3];
+            // Memodifikasi bagian W sesuai dengan panjangnya
+            var wParts = "";
+            if (parts[3].length === 3) {
+                wParts = parts[3][0] + "." + parts[3].substring(1); // Jika W adalah 3 digit
+            } else if (parts[3].length === 2) {
+                wParts = parts[3][0] + "." + parts[3][1]; // Jika W adalah 2 digit
+            } else {
+                wParts = parts[3]; // Jika W adalah 1 digit, tidak perlu titik
+            }
 
             var nbaCode = "NBA." + category + "." + section + "." + wParts + "\n";
             output += nbaCode;
@@ -52,6 +57,7 @@ function generateNBA() {
     });
     document.getElementById("output").innerText = output;
 }
+
 
 function copyOutput() {
     // Mendapatkan elemen output
