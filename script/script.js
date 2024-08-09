@@ -65,9 +65,6 @@ function copyOutput() {
     // Mengambil teks dari elemen output
     var text = outputElement.textContent || outputElement.innerText;
 
-    // Menghapus semua spasi atau enter di bagian atas teks
-    text = text.replace(/^\s+/, '');
-
     // Membuat elemen sementara untuk menampung teks
     var tempElement = document.createElement('textarea');
     tempElement.value = text;
